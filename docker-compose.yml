@@ -1,0 +1,37 @@
+# mongo DB
+
+db:
+  image: mongo:3.4.10
+# nodejs app 1d
+server:
+  build: server
+  ports:
+    - "1886:1886"
+  links:
+    - nginx:nginx 
+    -  db:mongo
+  restart: always
+nodejs_app_1:
+  build: app/
+  restart: always
+# nodejs app 2
+nodejs_app_2:
+  build: app/
+  restart: always
+# nodejs app 3
+nodejs_app_3:
+  build: app/
+  restart: always
+# nodejs app 4
+nodejs_app_4:
+  build: app/
+  restart: always
+
+# nginx
+nginx:
+  build: nginx/
+  links:
+    - nodejs_app_1:app_1
+    - nodejs_app_2:app_2
+    - nodejs_app_3:app_3
+    - nodejs_app_4:app_4

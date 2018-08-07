@@ -31,7 +31,7 @@ nginx:
 servertest:
   build: serverTest
   ports:
-    - "18123:18123"
+    - "18124:18123"
   links:
     - nginx:nginx
   restart: always

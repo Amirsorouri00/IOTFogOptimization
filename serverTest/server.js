@@ -19,7 +19,7 @@ wss.on('connection', function (ws) {
 
 
 
-  console.log('received:', message)
+  console.log('connected one socket')
 })
 //   setInterval(
 //     () => ws.send(`${new Date()}`),

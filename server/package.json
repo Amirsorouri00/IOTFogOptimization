@@ -9,6 +9,7 @@
   "author": "Mohsen Rahnamaei",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
     "django-channels": "^1.1.6",
     "mosca": "^2.8.3",
     "mqtt": "^2.18.3",

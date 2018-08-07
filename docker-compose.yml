@@ -2,15 +2,6 @@
 
 db:
   image: mongo:3.4.10
-# nodejs app 1d
-server:
-  build: server
-  ports:
-    - "1886:1886"
-  links:
-    - nginx:nginx 
-    -  db:mongo
-  restart: always
 nodejs_app_1:
   build: app/
   restart: always
@@ -35,3 +26,13 @@ nginx:
     - nodejs_app_2:app_2
     - nodejs_app_3:app_3
     - nodejs_app_4:app_4
+
+# nodejs app 1d
+server:
+  build: server
+  ports:
+    - "1886:1886"
+  links:
+    - nginx:nginx
+    -  db:mongo
+  restart: always

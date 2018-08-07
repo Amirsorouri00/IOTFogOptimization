@@ -1,13 +1,18 @@
-'use strict';
+var express        =        require("express");
+var bodyParser     =        require("body-parser");
+var app            =        express();
 
-var http = require('http'),
- 
- server = http.createServer(function(req,res){
-  //increment the counter
- res.end('data receive from mqtt server')
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+
+app.post('/',function(req,res){
+  var msg=req.body.message;
+  console.log("msg is : ",msg);
+  res.end("ok");
 });
 
-//our application listen to port for any incomming request
-server.listen(5000,function(){
-  console.log('Server listening on port '+5000);
-});
+
+app.listen(5000,function(){
+  console.log("Started on PORT 5000");
+})

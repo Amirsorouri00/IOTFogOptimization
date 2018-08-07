@@ -28,7 +28,7 @@ nginx:
     - nodejs_app_4:app_4
 
 # nodejs app 1d
-serverTest:
+servertest:
   build: serverTest
   ports:
     - "18123:18123"

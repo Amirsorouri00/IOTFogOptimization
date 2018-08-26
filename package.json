@@ -1,0 +1,17 @@
+{
+  "name": "dockernode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "mohsen rahnamaei",
+  "license": "ISC",
+  "dependencies": {
+    "docker-compose-js": "0.0.11",
+    "dockerode": "^2.5.5",
+    "dockerstats": "^1.1.0",
+    "node-run-cmd": "^1.0.1"
+  }
+}

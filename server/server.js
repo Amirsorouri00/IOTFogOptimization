@@ -31,7 +31,7 @@ server.on('published', function(packet, client) {
   //   console.log(response.status); // ex.: 200
   // }); 
   
-  axios.post('http://nginx/', {
+  axios.post('http://reverse-proxy/', {
     message:packet
   })
   .then(function (response) {

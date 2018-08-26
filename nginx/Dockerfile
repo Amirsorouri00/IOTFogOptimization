@@ -1,6 +1,6 @@
 #set nginx base image
 FROM nginx:1.13
-MAINTAINER "ahmad.tahani@gmail.com"
+MAINTAINER "mohsen rahnamaei"
 
 # copy nginx custom configuration file to nginx configs
 EXPOSE 80

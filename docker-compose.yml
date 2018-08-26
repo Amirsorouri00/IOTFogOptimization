@@ -1,45 +1,38 @@
-# mongo DB
+version: '3'
+services:
+  reverse-proxy:
+    image: traefik # The official Traefik docker image
+    command: --api --docker  --accessLog --constraints=tag==my-stack # Enables the web UI and tells Træfik to listen to docker
+    ports:
+      - "80:80"     # The HTTP port
+      - "8080:8080" # The Web UI (enabled by --api)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
 
-db:
-  image: mongo:3.4.10
-nodejs_app_1:
-  build: app/
-  restart: always
-# nodejs app 2
-nodejs_app_2:
-  build: app/
-  restart: always
-# nodejs app 3
-nodejs_app_3:
-  build: app/
-  restart: always
-# nodejs app 4
-nodejs_app_4:
-  build: app/
-  restart: always
-
-# nginx
-nginx:
-  build: nginx/
-  links:
-    - nodejs_app_1:app_1
-    - nodejs_app_2:app_2
-    - nodejs_app_3:app_3
-    - nodejs_app_4:app_4
-
-# nodejs app 1d
-servertest:
-  build: serverTest
-  ports:
-    - "18124:18123"
-  links:
-    - nginx:nginx
-  restart: always
-server:
-  build: server
-  ports:
-    - "1886:1886"
-  links:
-    - nginx:nginx
-    -  db:mongo
-  restart: always
+  db:
+    image: mongo:3.4.10
+  testa:
+    build: app/
+    restart: always
+    labels:
+      - "traefik.frontend.rule=PathPrefix:/"
+      - "traefik.backend.loadbalancer.method=drr"
+      - "traefik.enable=true"
+      - "traefik.port=5000"
+      - "traefik.tags=my-stack"
+  # nodejs app 1d
+  # servertest:
+  #   build: serverTest
+  #   ports:
+  #     - "18124:18123"
+  #   links:
+  #     - nginx:nginx
+  #   restart: always
+  server:
+    build: server
+    ports:
+      - "1886:1886"
+    links:
+      - reverse-proxy:reverse-proxy
+      -  db:mongo
+    restart: always

@@ -4,7 +4,7 @@ MAINTAINER "rahnamaei_158@yahoo.com"
 
 RUN mkdir -p /nodejs/app
 WORKDIR /nodejs/app
-COPY server.js .
+COPY server.js  .
 COPY package.json .
 RUN npm i
 ENV APP_PORT 8000

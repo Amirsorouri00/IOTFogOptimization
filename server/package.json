@@ -1,0 +1,21 @@
+{
+  "name": "mqttserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mohsen Rahnamaei",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "django-channels": "^1.1.6",
+    "mosca": "^2.8.3",
+    "mqtt": "^2.18.3",
+    "shopify-reconnecting-websocket": "^0.1.0",
+    "socket.io": "^2.1.1",
+    "socket.io-client": "^2.1.1",
+    "websocket": "^1.0.26"
+  }
+}

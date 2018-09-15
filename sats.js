@@ -50,15 +50,7 @@ function scale(num) {
     nrc.run('docker-compose up -d --scale testa=' + num);
 }
 // compose.scale('testa=4');
-scale(5)
-dockerstats.dockerContainerStats('5cfaff6b8b7a', function (data) {
-    console.log('Docker Container Stats:');
-    console.log('- ID: ' + data.id);
-    console.log('- Mem usage: ' + data.mem_usage);
-    console.log('- Mem limit: ' + data.mem_limit);
-    console.log('- Mem usage %: ' + data.mem_percent);
-    console.log('- CPU usage %: ' + data.cpu_percent);
-})
+ 
 setInterval(function () {
 
     dockerstats.dockerContainerStats('mosqdockertraefic_testa_1', function (data) {
@@ -67,7 +59,24 @@ setInterval(function () {
         console.log('- Mem usage: ' + data.mem_usage);
         console.log('- Mem limit: ' + data.mem_limit);
         console.log('- Mem usage %: ' + data.mem_percent);
-        console.log('- CPU usage %: ' + data.cpu_percent);
+/*
+	if(data.cpu_percent>0.50){
+		console.log('0.50');
+		scale(9)	
+	}
+	else if(data.cpu_percent>0.40) {
+		console.log('0.40');
+		scale(7)			
+	}
+	else if(data.cpu_percent>0.01) {
+		console.log('0.30');
+		scale(5)			
+	}
+	else {
+		console.log('0.20');
+		scale(3)			
+	}
+  */      console.log('- CPU usage %: ' + data.cpu_percent);
     })
 
 
